@@ -86,7 +86,7 @@ public class AdaptiveDepositInterestRateWithStickiness extends AbstractStrategy 
 			if(referenceVariable>0){
 				
 				if(depositUpperBound>previousDepositRate) {
-					if(probX > 0.75) {
+					if(probX > 0.5) {
 						iR=avInterest+(adaptiveParameter*distribution.nextDouble());
 						return Math.min(iR, lender.getInterestRateUpperBound(mktId));
 					}else {
@@ -98,7 +98,7 @@ public class AdaptiveDepositInterestRateWithStickiness extends AbstractStrategy 
 			}else{
 				
 				if(depositUpperBound>previousDepositRate) {
-					if(probX > 0.75) {
+					if(probX > 0.5) {
 						iR=avInterest-(adaptiveParameter*distribution.nextDouble());
 						return Math.max(iR, lender.getInterestRateLowerBound(mktId));
 					}else {
