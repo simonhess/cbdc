@@ -113,6 +113,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 		</property>
 		<property name="events">
 			<list>
+				<ref bean="ShockTic" />
 				<ref bean="computeExpectationsTic" />		
 				<ref bean="laborDemandTic" />
 				<ref bean="laborSupplyTic" />		
@@ -149,7 +150,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 				<ref bean="dividendsTic" />
 				<ref bean="depDemandTic" />
 				<ref bean="depMarketTic" />
-				<ref bean="ShockTic" />
+				
 				<ref bean="bankruptcyTic" />
 				<ref bean="bankruptcyTic2" />
 				<ref bean="bondSupplyTic" />
@@ -310,7 +311,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 			</list>
 		</property>
 		<property name="simulationController" ref="simulationController" />
-		<property name="maximumRounds" value="1200" />
+		<property name="maximumRounds" value="400" />
 		<property name="population" ref="macroPopulation" />
 		<property name="agentInitialiser" ref="sfcAgentsInitialiser" />
 		<property name="handler" ref="populationHandler" />
@@ -3897,7 +3898,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 				<util:constant static-field="benchmark2.StaticValues.TIC_UPDATEEXPECTATIONS" />
 				<util:constant static-field="benchmark2.StaticValues.TIC_CONSUMPTIONDEMAND" />
 				<util:constant static-field="benchmark2.StaticValues.TIC_UNEMPLOYMENTBENEFITAMOUNT" />
-			<!-- <util:constant static-field="benchmark2.StaticValues.TIC_SHOCK" />  -->
+			 	<util:constant static-field="benchmark2.StaticValues.TIC_SHOCK" />
 			</list>
 		</property>
 		<property name="numberMarkets" value="9" />
@@ -3993,7 +3994,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 	</bean>
 	
 	<bean id="governmentShockStrategy" scope="prototype" parent="strategy"
-		class="benchmark2.strategies.BankAssetValueShock">
+		class="cbdc.strategies.CBDCShock">
 	</bean>
 	
 	
