@@ -3989,7 +3989,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 	</bean>
 	
 	<bean id="governmentConsumptionStrategy" scope="prototype" parent="strategy"
-		class="benchmark2.strategies.GovernmentCBProfitConsumptionStrategy">
+		class="cbdc.strategies.GovernmentCBProfitConsumptionStrategy">
 	</bean>
 	
 	<bean id="governmentShockStrategy" scope="prototype" parent="strategy"
