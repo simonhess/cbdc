@@ -113,7 +113,9 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 		</property>
 		<property name="events">
 			<list>
+			<!-- Reports	
 				<ref bean="ShockTic" />
+			-->
 				<ref bean="computeExpectationsTic" />		
 				<ref bean="laborDemandTic" />
 				<ref bean="laborSupplyTic" />		
