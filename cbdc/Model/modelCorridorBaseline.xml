@@ -112,10 +112,8 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 			</list>
 		</property>
 		<property name="events">
-			<list>
-			<!-- Reports	
+			<list>	
 				<ref bean="ShockTic" />
-			-->
 				<ref bean="computeExpectationsTic" />		
 				<ref bean="laborDemandTic" />
 				<ref bean="laborSupplyTic" />		
@@ -3995,7 +3993,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 	</bean>
 	
 	<bean id="governmentShockStrategy" scope="prototype" parent="strategy"
-		class="cbdc.strategies.CBDCShock">
+		class="cbdc.strategies.NoShock">
 	</bean>
 	
 	
