@@ -169,36 +169,22 @@ public class BankBankruptcyDepositInsurance extends AbstractStrategy implements
 			totalNW += ((MacroAgent) receiver).getNetWealth();
 		}
 		
-		// Transfer all deposit insurance funds to the bankrupt bank
+		
+		double fundsToSpend = Math.min(-nw, depositInsuranceFundSum);
+		
+	// Transfer deposit insurance funds to the bankrupt bank proportionally to the banks contribution to the deposit insurance fund
 		
 		for(Map.Entry<Bank, Deposit> dep: DIFund) {
-				
-				double toPay = dep.getValue().getValue();
-
+				Bank receiver = (Bank) dep.getKey();
+			
 				Item payablestock =dep.getValue();
+				
+				double bankShareOfDIFund = sharesOfDIFund.get(receiver.getAgentId());
+				double toPay = bankShareOfDIFund*fundsToSpend;
 
 				LiabilitySupplier libHolder = (LiabilitySupplier) payablestock.getLiabilityHolder();
 
 				libHolder.transfer(payablestock, targetStock, toPay);
-		}
-			
-		// Transfer funds back if the insurance fund was greater than the negative capital
-		
-		if(bank.getNetWealth()>0) {
-				double excessCapital = bank.getNetWealth();
-				
-				for(Map.Entry<Bank, Deposit> dep: DIFund) {
-					Bank receiver = (Bank) dep.getKey();
-					
-					double bankShareOfDIFund = sharesOfDIFund.get(receiver.getAgentId());
-					double toPay = bankShareOfDIFund*excessCapital;
-
-					Item payablestock =dep.getValue();
-
-					LiabilitySupplier libHolder = (LiabilitySupplier) targetStock.getLiabilityHolder();
-
-					libHolder.transfer(targetStock, payablestock, toPay);
-				}
 		}
 				
 		double capitalAfterDIRecapitalization = bank.getNetWealth();
