@@ -3573,7 +3573,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 	</bean>
 	
 	<bean id="banksDividendsStrategy" scope="prototype" parent="strategy"
-	class="benchmark2.strategies.FixedShareOfProfitsDividendsIfSufficientCAR">
+	class="cbdc.strategies.DividendsIfSufficientCARAndDIFond">
 		<property name="profitsLagId"><util:constant static-field="benchmark2.StaticValues.LAG_PROFITAFTERTAX" /> </property>
 		<property name="profitShare" value="0.6" />
 		<property name="excessEquityDecayRate" value="0.25" />
