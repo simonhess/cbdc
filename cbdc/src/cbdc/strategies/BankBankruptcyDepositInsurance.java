@@ -143,7 +143,12 @@ public class BankBankruptcyDepositInsurance extends AbstractStrategy implements
 		
 		for(Map.Entry<Bank, Deposit> dep: DIFund) {
 			depositInsuranceFundSum+=dep.getValue().getValue();
-			sharesOfDIFund.put(dep.getKey().getAgentId(), dep.getValue().getValue()/depositInsuranceFundSum);
+			if(depositInsuranceFundSum==0) {
+				sharesOfDIFund.put(dep.getKey().getAgentId(), (double) 0);
+			}
+			else {
+				sharesOfDIFund.put(dep.getKey().getAgentId(), dep.getValue().getValue()/depositInsuranceFundSum);
+			}
 		}
 		
 		
