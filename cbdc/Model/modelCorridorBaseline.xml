@@ -113,7 +113,6 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 		</property>
 		<property name="events">
 			<list>	
-				<ref bean="ShockTic" />
 				<ref bean="computeExpectationsTic" />		
 				<ref bean="laborDemandTic" />
 				<ref bean="laborSupplyTic" />		
@@ -145,7 +144,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 				<ref bean="advInterestTic" />
 				<!-- New TIC for interest & loan repayment -->
 				<ref bean="interbankInterestTic" />
-
+				<ref bean="ShockTic" />
 				<ref bean="taxesTic" />
 				<ref bean="dividendsTic" />
 				<ref bean="depDemandTic" />
