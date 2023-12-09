@@ -8,7 +8,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<import resource="modelCorridorCBDC.xml"/>
+	<import resource="modelCorridorBaseline.xml"/>
 	<import resource="reports.xml" />
 	
 	<bean id="simulationController" 
@@ -185,6 +185,10 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 	<bean id="fileNamePrefix" class="net.sourceforge.jabm.util.MutableStringWrapper"
 		scope="singleton">
 		<constructor-arg value="data/" />
+	</bean>
+	
+	<bean id="governmentShockStrategy" scope="prototype" parent="strategy"
+		class="cbdc.strategies.CBDCShock">
 	</bean>
 
 </beans>
