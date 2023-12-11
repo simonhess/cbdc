@@ -932,10 +932,12 @@ public class SFCSSMacroAgentInitialiserWithDepositInsurance extends AbstractMacr
 		ArrayList<Map.Entry<Bank, Deposit>> DIFund = 
 			    new ArrayList<Map.Entry<Bank, Deposit>>();
 		
+		double gResPerBank = gRes/banks.getSize();
+		
 		for(int i = 0; i<bSize; i++){
 			Bank b = (Bank) banks.getAgentList().get(i);
 			
-			Deposit DIRes = new Deposit(0,(SimpleAbstractAgent)govt,(SimpleAbstractAgent)cb,this.iReserves);
+			Deposit DIRes = new Deposit(gResPerBank,(SimpleAbstractAgent)govt,(SimpleAbstractAgent)cb,this.iReserves);
 			govt.addItemStockMatrix(DIRes, true, StaticValues.SM_RESERVES);
 			cb.addItemStockMatrix(DIRes, false, StaticValues.SM_RESERVES);
 			
