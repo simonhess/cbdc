@@ -359,6 +359,20 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 	</bean>
 	
 	<bean id="governmentShockStrategy" scope="prototype" parent="strategy"
+		class="cbdc.strategies.MultiShock">
+		<property name="shocks">
+			<list>
+				<ref bean="cbdcShock" />
+				<ref bean="bankAssetValueShock" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="cbdcShock" scope="prototype" parent="strategy"
+		class="cbdc.strategies.CBDCShock">
+	</bean>
+	
+	<bean id="bankAssetValueShock" scope="prototype" parent="strategy"
 		class="cbdc.strategies.BankAssetValueShock">
 		<property name="prng" ref="prng"/>
 	</bean>
