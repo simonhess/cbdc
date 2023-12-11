@@ -52,8 +52,6 @@ public class BankBankruptcyDepositInsurance extends AbstractStrategy implements
 //	private int numberBailouts; 
 	private int depositId;
 	private int depositExpectationId;
-	private double shareOfDepositsForInsurance;
-	protected RandomEngine prng;
 
 	/**
 	 * @return the depositId
@@ -109,7 +107,7 @@ public class BankBankruptcyDepositInsurance extends AbstractStrategy implements
 			if (bank1.getAgentId()!=bank.getAgentId())
 			tot+=bank1.getCapitalRatio();
 			}
-		Uniform distribution = new Uniform(0,0.1,prng);
+
 		//double car=tot/(banks.getSize()-1)+distribution.nextDouble();
 		double car = bank.getTargetedCapitalAdequacyRatio();
 		List<Item> loans=bank.getItemsStockMatrix(true, StaticValues.SM_LOAN);
@@ -275,17 +273,6 @@ public class BankBankruptcyDepositInsurance extends AbstractStrategy implements
 		//System.out.println(numberBailouts);
 		
 	}
-	
-
-	public RandomEngine getPrng() {
-		return prng;
-	}
-
-
-	public void setPrng(RandomEngine prng) {
-		this.prng = prng;
-	}
-
 
 	/**
 	 * Generate the byte array structure of the strategy. The structure is as follow:
@@ -312,16 +299,6 @@ public class BankBankruptcyDepositInsurance extends AbstractStrategy implements
 		ByteBuffer buf = ByteBuffer.wrap(content);
 		this.depositId = buf.getInt();
 		this.depositExpectationId = buf.getInt();
-	}
-
-
-	public double getShareOfDepositsForInsurance() {
-		return shareOfDepositsForInsurance;
-	}
-
-
-	public void setShareOfDepositsForInsurance(double shareOfDepositsForInsurance) {
-		this.shareOfDepositsForInsurance = shareOfDepositsForInsurance;
 	}
 
 }

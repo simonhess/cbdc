@@ -355,7 +355,6 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 	class="cbdc.strategies.BankBankruptcyDepositInsurance">
 	<property name="depositId"><util:constant static-field="benchmark2.StaticValues.SM_DEP"/></property>
 	<property name="depositExpectationId"><util:constant static-field="benchmark2.StaticValues.EXPECTATIONS_DEPOSITS"/></property>
-	<property name="prng" ref="prng"/>
 	</bean>
 	
 	<bean id="governmentShockStrategy" scope="prototype" parent="strategy"
