@@ -32,7 +32,7 @@ public class BankAssetValueShock extends AbstractStrategy implements ShockStrate
 		MacroPopulation macroPop = (MacroPopulation) controller.getPopulation();
 		Population bs = macroPop.getPopulation(StaticValues.BANKS_ID);
 			
-			if(round==201) {
+			if(round==400) {
 				Uniform distr = new Uniform(0,bs.getSize()-1,prng);
 				int bankruptBankIndex = distr.nextInt();
 				MacroAgent bankruptBank = (MacroAgent)bs.getAgentList().get(bankruptBankIndex);
