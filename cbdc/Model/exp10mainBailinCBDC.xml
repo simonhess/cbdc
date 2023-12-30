@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  "Innovation, Demand, and Finance in an Agent Based-Stock Flow Consistent model" 
+Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kinsella, S., Stiglitz, J.
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+	
+	<import resource="modelCorridorBaseline.xml"/>
+	<import resource="reports.xml" />
+	
+	<bean id="simulationController" 
+			class="net.sourceforge.jabm.SpringSimulationController"
+			scope="singleton">
+			
+		<property name="simulationBeanName">
+		   <idref local="macroSimulation"/>
+		</property>
+	
+		<property name="numSimulations" value="100"/>	
+		
+		<property name="reports">
+			<list>
+				<ref bean="nominalGDPEventReport" />
+				<ref bean="nominalGDPCSVReport" />
+				<ref bean="realGDPEventReport" />
+				<ref bean="realGDPCSVReport" />
+				<ref bean="nominalInvestmentEventReport" />
+				<ref bean="nominalInvestmentCSVReport" />
+				<ref bean="unemploymentEventReport" />
+				<ref bean="unemploymentCSVReport" />
+				<ref bean="bankCreditEventReport" />
+				<ref bean="microBankCreditCSVReport" />
+				<ref bean="creditDegreeEventReport" />
+				<ref bean="creditDegreeCSVReport" />
+				<ref bean="realInvEventReport" />
+				<ref bean="microRealInvCSVReport" />
+				<ref bean="microRealSalesKEventReport" />
+				<ref bean="microRealSalesKCSVReport" />
+				<ref bean="microRealSalesCEventReport" />
+				<ref bean="microRealSalesCCSVReport" />
+				<ref bean="microNominalSalesKEventReport" />
+				<ref bean="microNominalSalesKCSVReport" />
+				<ref bean="microNominalSalesCEventReport" />
+				<ref bean="microNominalSalesCCSVReport" />
+				<ref bean="aggHHBSEventReport" />
+				<ref bean="aggHHBSCSVReport" />
+				<ref bean="aggCFBSEventReport" />
+				<ref bean="aggCFBSCSVReport" />
+				<ref bean="aggKFBSEventReport" />
+				<ref bean="aggKFBSCSVReport" />
+				<ref bean="aggBBSEventReport" />
+				<ref bean="aggBBSCSVReport" />
+				<ref bean="aggGBSEventReport" />
+				<ref bean="aggGBSCSVReport" />
+				<ref bean="aggCBBSEventReport" />
+				<ref bean="aggCBBSCSVReport" />
+				<ref bean="cAvPriceEventReport" />
+				<ref bean="cAvPriceCSVReport" />
+				<ref bean="cFirmsPricesEventReport" />
+				<ref bean="cFirmsPricesCSVReport" />
+				<ref bean="kAvPriceEventReport" />
+				<ref bean="kAvPriceCSVReport" />
+				<ref bean="loanAvInterestEventReport" />
+				<ref bean="loanAvInterestCSVReport" />
+				<ref bean="depAvInterestEventReport" />
+				<ref bean="depAvInterestCSVReport" />
+				<ref bean="depAvInterestBidEventReport" />
+				<ref bean="depAvInterestBidCSVReport" />
+				<ref bean="avWageEventReport" />
+				<ref bean="avWageCSVReport" />
+				<ref bean="avNetIncomeEventReport" />
+				<ref bean="avNetIncomeCSVReport" />
+				<ref bean="avNominalConsumptionEventReport" />
+				<ref bean="avNominalConsumptionCSVReport" />
+				<ref bean="giniEventReport" />
+				<ref bean="giniCSVReport" />
+				<ref bean="cGoodSupplierSwitchingRateEventReport" />
+				<ref bean="cGoodSupplierSwitchingRateCSVReport" />
+				<ref bean="kGoodSupplierSwitchingRateEventReport" />
+				<ref bean="kGoodSupplierSwitchingRateCSVReport" />
+				<ref bean="AveragePriceAllProducersEventReport" />
+				<ref bean="AveragePriceAllProducersCSVReport" />
+				<ref bean="kFirmsBankruptcyEventReport" />
+				<ref bean="kFirmsBankruptcyCSVReport" />
+				<ref bean="cFirmsBankruptcyEventReport" />
+				<ref bean="cFirmsBankruptcyCSVReport" />
+				<ref bean="banksBankruptcyEventReport" />
+				<ref bean="banksBankruptcyCSVReport" />
+				<ref bean="cAggConsCreditEventReport" />
+				<ref bean="cAggConsCreditCSVReport" />
+				<ref bean="kAggConsCreditEventReport" />
+				<ref bean="kAggConsCreditCSVReport" />
+				<ref bean="cCapacityEventReport" />
+				<ref bean="microCCapacityCSVReport" />	
+				<ref bean="cCapacityUtilizationEventReport" />
+				<ref bean="microCCapacityUtilizationCSVReport" />
+				<ref bean="banksCREventReport" />
+				<ref bean="banksCRCSVReport" />
+				<ref bean="banksCAREventReport" />
+				<ref bean="banksCARCSVReport" />
+				<ref bean="banksLREventReport" />
+				<ref bean="banksLRCSVReport" />
+				<ref bean="banksLossEventReport" />
+				<ref bean="banksLossCSVReport" />
+				<ref bean="microBailoutCostKEventReport" />
+				<ref bean="microBailoutCostKCSVReport" />
+				<ref bean="microBailoutCostCEventReport" />
+				<ref bean="microBailoutCostCCSVReport" />
+				<ref bean="microBailoutCostBanksEventReport" />
+				<ref bean="microBailoutCostBanksCSVReport" />
+				<!-- Added extra interbank reporters -->
+				<ref bean="microTotalInterBankLoansEventReport" />
+				<ref bean="microTotalInterBankLoansCSVReport" />
+				<ref bean="microTotalInterBankCreditObtainedEventReport" />
+				<ref bean="microTotalInterBankCreditObtainedCSVReport" />
+				<ref bean="microAverageInterBankAskRateEventReport" />
+				<ref bean="microAverageInterBankAskRateCSVReport" />
+				<ref bean="microTotalInterBankConstrainedCreditEventReport" />
+				<ref bean="microTotalInterBankConstrainedCreditCSVReport" />
+				<ref bean="microTotalInterBankDebtServiceEventReport" />
+				<ref bean="microTotalInterBankDebtServiceCSVReport" />
+				<!-- ANTOINE ADD 28 APRIL -->
+				<ref bean="microInterbankRateEventReport" />
+				<ref bean="microInterbankRateCSVReport" />
+				<ref bean="microInterbankDemandEventReport" />
+				<ref bean="microInterbankDemandCSVReport" />
+				<ref bean="microInterbankSupplyEventReport" />
+				<ref bean="microInterbankSupplyCSVReport" />
+				<ref bean="banksSpecificInterestEventReport" />
+				<ref bean="banksSpecificInterestCSVReport" />
+				<ref bean="banksDepositInterestEventReport" />
+				<ref bean="banksDepositInterestCSVReport" />
+				<ref bean="cbDepositInterestEventReport" />
+				<ref bean="cbDepositInterestCSVReport" />
+				<ref bean="cbAdvancesInterestEventReport" />
+				<ref bean="cbAdvancesInterestCSVReport" />
+				<ref bean="banksProfitsEventReport" />
+				<ref bean="banksProfitsCSVReport" />
+				<ref bean="microBanksMarkupEventReport" />
+				<ref bean="microBanksMarkupCSVReport" />
+				<ref bean="microCMarkupEventReport" />
+				<ref bean="microCMarkupCSVReport" />
+				<ref bean="microKMarkupEventReport" />
+				<ref bean="microKMarkupCSVReport" />
+				<ref bean="cFirmsProfitsEventReport" />
+				<ref bean="cFirmsProfitsCSVReport" />
+				<ref bean="kFirmsProfitsEventReport" />
+				<ref bean="kFirmsProfitsCSVReport" />
+				<ref bean="cFirmsDebtServiceEventReport" />
+				<ref bean="cFirmsDebtServiceCSVReport" />
+				<ref bean="kFirmsDebtServiceEventReport" />
+				<ref bean="kFirmsDebtServiceCSVReport" />
+				<ref bean="hhBailoutCostStdDevEventReport" />
+				<ref bean="hhBailoutCostStdDevCSVReport" />
+				<ref bean="hhAvBailoutCostEventReport" />
+				<ref bean="hhAvBailoutCostCSVReport" />
+				<ref bean="interbankAvInterestEventReport" />
+				<ref bean="interbankAvInterestCSVReport" />
+				<!-- <ref bean="TFMEventReport" />
+				<ref bean="TFMCSVReport" /> -->
+				<ref bean="realCDesOutputEventReport" />
+				<ref bean="realCDesOutputCSVReport" />
+				<ref bean="realKDesOutputEventReport" />
+				<ref bean="realKDesOutputCSVReport" />
+				<ref bean="cEmployeeEventReport" />
+				<ref bean="cOCFEventReport" />
+				<ref bean="cOCFCSVReport" />
+				<ref bean="kOCFEventReport" />
+				<ref bean="kOCFCSVReport" />
+				<ref bean="microOutputKEventReport" />
+				<ref bean="microOutputKCSVReport" />
+				<ref bean="microOutputCEventReport" />
+				<ref bean="microOutputCCSVReport" />
+			</list>
+		</property>
+		
+		<property name="modelDescription" 
+			value="Caiani et Al. - Innovation, Demand, and Finance in an Agent Based-Stock Flow Consistent model"/>
+			
+	</bean>
+
+	<bean id="fileNamePrefix" class="net.sourceforge.jabm.util.MutableStringWrapper"
+		scope="singleton">
+		<constructor-arg value="data/" />
+	</bean>
+	
+		<bean id="advancesInterestRateStrategy" scope="prototype"
+		parent="strategy" class="benchmark2.strategies.MonetaryPolicyStatic">
+				<property name="staticAdvancesRate" value="0.0"/>
+	</bean> 
+	
+		<!-- The basic initialiser of agents -->
+	<bean id="sfcAgentsInitialiser"
+	    class="benchmark2.init.SFCSSMacroAgentInitialiser">
+	    <property name="uniformDistr" value="0.0075"/>
+		<property name="prng" ref="prng" />
+		
+<property name="hhWage" value="5"/>
+<property name="gr" value="0.0075"/>
+<property name="hhsSize" value="8000"/>
+<property name="propensityOOW" value="0.25"/>
+<property name="csEmpl" value="5000"/>
+<property name="ksEmpl" value="1000"/>
+<property name="inventoryShare" value="0.1"/>
+<property name="csKap" value="40000"/>
+<property name="capitalDuration" value="20"/>
+<property name="capitalProductivity" value="1"/>
+<property name="shareOfExpIncomeAsDeposit" value="1"/>
+<property name="iAdv" value="0"/>
+<property name="iBonds" value="0"/>
+<property name="iDep" value="0"/>
+<property name="targetedLiquidityRatio" value="0.05"/>
+<property name="targetedCapitalAdequacyRatio" value="0.08"/>
+<property name="DISReserveRatio" value="0"/>
+<property name="loanLength" value="20"/>
+<property name="csMarkup" value="0.165"/>
+<property name="ksMarkup" value="0.075"/>
+<property name="bsMarkup" value="0.0025"/>
+<property name="bsAdv" value="2386.520100998"/>
+<property name="bsBonds" value="21624.2008438972"/>
+<property name="bsCash" value="0"/>
+<property name="bsProfits" value="70.4126690475314"/>
+<property name="bsRes" value="2386.520100998"/>
+<property name="bsTax" value="12.6742804285557"/>
+<property name="bsDiv" value="40.8393480475646"/>
+<property name="bsNW" value="2270.10445009241"/>
+<property name="bsProfitShareAsDividends" value="0.707317073170669"/>
+<property name="riskAversionK" value="7.19722457733622"/>
+<property name="riskAversionC" value="7.19722457733622"/>
+<property name="cbBonds" value="0"/>
+<property name="cbProfits" value="0"/>
+<property name="seigniorage" value="0"/>
+<property name="csOutput" value="32000"/>
+<property name="cPrice" value="1.09380487947987"/>
+<property name="csDep" value="25000"/>
+<property name="csInv" value="3200"/>
+<property name="csLoans" value="27050.471572154"/>
+<property name="csLoans0" value="2699.34226182987"/>
+<property name="csOCF" value="9038.28813268757"/>
+<property name="csProfits" value="4979.69584680446"/>
+<property name="cUnitCost" value="0.938888308566414"/>
+<property name="csTax" value="896.345252424803"/>
+<property name="csDiv" value="3675.01553494169"/>
+<property name="targetCashFlow" value="0.168946896348096"/>
+<property name="unemploymentBenefit" value="0.523765989471721"/>
+<property name="gEmpl" value="1360"/>
+<property name="gRes" value="0"/>
+<property name="gBonds" value="21624.2008438972"/>
+<property name="hhsDep" value="17730.4020199599"/>
+<property name="hhsNI" value="35104.0008058974"/>
+<property name="hhsTax" value="7337.84260381197"/>
+<property name="hhsNomCons" value="35001.7561433559"/>
+<property name="hhsRealCons" value="32000"/>
+<property name="propensityOOI" value="0.9"/>
+<property name="hhsNW" value="17730.4020199599"/>
+<property name="iLoans" value="0.0025"/>
+<property name="iReserves" value="0"/>
+<property name="ksOutput" value="2000"/>
+<property name="kPrice" value="2.68926832705714"/>
+<property name="ksDep" value="5000"/>
+<property name="ksInv" value="200"/>
+<property name="ksLoans" value="1325.83405400111"/>
+<property name="ksLoans0" value="132.303789403159"/>
+<property name="ksOCF" value="307.03191349662"/>
+<property name="ksProfits" value="378.971276742658"/>
+<property name="kUnitCost" value="2.50164495540199"/>
+<property name="ksTax" value="68.2148298136784"/>
+<property name="ksDiv" value="279.680802236082"/>
+<property name="laborProductivity" value="2"/>
+<property name="capitalLaborRatio" value="6.4"/>
+<property name="ksShareOfExpIncomeAsDeposit" value="1"/>
+<property name="csShareOfExpIncomeAsDeposit" value="1"/>
+<property name="csEBITDAminusCAPEX" value="4645.58506681545"/>
+<property name="ksEBITDA" value="382.261187546632"/>
+
+<property name="avpAllProdComputer" ref="AveragePriceAllProducersComputer"/>
+	</bean>
+	
+<bean id="governmentShockStrategy" scope="prototype" parent="strategy"
+		class="cbdc.strategies.MultiShock">
+		<property name="shocks">
+			<list>
+				<ref bean="cbdcShock" />
+				<ref bean="bankAssetValueShock" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="cbdcShock" scope="prototype" parent="strategy"
+		class="cbdc.strategies.CBDCShock">
+	</bean>
+	
+	<bean id="bankAssetValueShock" scope="prototype" parent="strategy"
+		class="cbdc.strategies.BankAssetValueShock">
+		<property name="prng" ref="prng"/>
+	</bean>
+
+	<bean id="banksBankruptcyStrategy" scope="prototype" parent="strategy"
+	class="benchmark2.strategies.BankBankruptcyBailin">
+	<property name="depositId"><util:constant static-field="benchmark2.StaticValues.SM_DEP"/></property>
+	<property name="depositExpectationId"><util:constant static-field="benchmark2.StaticValues.EXPECTATIONS_DEPOSITS"/></property>
+	</bean>
+
+</beans>
