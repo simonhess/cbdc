@@ -6371,14 +6371,14 @@
 	<property name="simulationController" ref="simulationController" />
 	<property name="reports">
 			<list>
-				<ref bean="cFirmsEBITDAminusCAPEXReport" />
+			 <!-- <ref bean="cFirmsEBITDAminusCAPEXReport" />
 				<ref bean="kFirmsEBITDAReport" />
 				<ref bean="cFirmsExpEBITDAminusCAPEXReport" />
 				<ref bean="kFirmsExpEBITDAReport" />
 				<ref bean="cFirmsExpUFCFperCapacityReport" />
 				<ref bean="cFirmsUFCFReport" />
 				<ref bean="cFirmsRealSalesExpReport" />
-				<ref bean="kFirmsRealSalesExpReport" />
+				<ref bean="kFirmsRealSalesExpReport" /> -->
 				<ref bean="banksDepositsStockReport" />
 				<ref bean="banksBondsReport" />
 				<ref bean="cFirmsInvestmentTargetReport" />
@@ -6392,7 +6392,7 @@
 				<ref bean="cbExpUnemploymentReport" />
 				<ref bean="banksLoansGrantedReport" />
 				<ref bean="banksExpRealLoansGrantedReport" />
-				<ref bean="banksExpProfitAfterTaxReport" />
+				<!-- <ref bean="banksExpProfitAfterTaxReport" /> -->
 				<ref bean="banksDepositInterestPaidReport" />
 			</list>
 		</property>
