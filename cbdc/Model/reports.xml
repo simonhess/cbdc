@@ -6394,6 +6394,8 @@
 				<ref bean="banksExpRealLoansGrantedReport" />
 				<!-- <ref bean="banksExpProfitAfterTaxReport" /> -->
 				<ref bean="banksDepositInterestPaidReport" />
+				<ref bean="banksAdvancesInterestPaidReport" />
+				
 			</list>
 		</property>
 	</bean>
@@ -6843,6 +6845,29 @@
 	</bean>
 	
 	<bean id="banksDepositInterestPaidReportVariables" class="jmab2.report.MicroMultiVariablesReport">
+	<property name="numberOfSeries" value="100"/>
+	</bean>
+	
+	
+							<!-- Banks advances interest paid report -->
+	
+	<bean id="banksAdvancesInterestPaidReport" class="jmab2.report.MicroSimpleCSVReport">
+	<property name="computer" ref="banksAdvancesInterestPaidComputer"/>
+	<property name="CSVreportVariable" ref="banksAdvancesInterestPaidCSVReportVariables"/>
+	</bean>
+	
+	<bean id="banksAdvancesInterestPaidComputer" class="cbdc.report.BanksAdvancesInterestPaidComputer">
+	<property name="banksId"><util:constant static-field="benchmark2.StaticValues.BANKS_ID"/></property>
+	</bean>
+	
+	<bean id="banksAdvancesInterestPaidCSVReportVariables" class="jmab2.report.MacroCSVReportVariables">
+	<property name="reportVariables" ref="banksAdvancesInterestPaidReportVariables"/>
+	<property name="fileNamePrefix" ref="fileNamePrefix" />
+	<property name="fileNameSuffix" value="banksAdvancesInterestPaid" />
+	<property name="passThrough" value="true" />
+	</bean>
+	
+	<bean id="banksAdvancesInterestPaidReportVariables" class="jmab2.report.MicroMultiVariablesReport">
 	<property name="numberOfSeries" value="100"/>
 	</bean>
 	
