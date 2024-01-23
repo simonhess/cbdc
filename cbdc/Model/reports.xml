@@ -6395,7 +6395,8 @@
 				<!-- <ref bean="banksExpProfitAfterTaxReport" /> -->
 				<ref bean="banksDepositInterestPaidReport" />
 				<ref bean="banksAdvancesInterestPaidReport" />
-				
+				<ref bean="banksBondsInterestReceivedReport" />
+				<ref bean="cbReservesInterestPaidReport" />
 			</list>
 		</property>
 	</bean>
@@ -6960,6 +6961,50 @@
 	</bean>
 	
 	<bean id="banksExpProfitAfterTaxReportVariables" class="jmab2.report.MicroMultiVariablesReport">
+	<property name="numberOfSeries" value="100"/>
+	</bean>
+	
+						<!-- banks bonds interest received report -->
+	
+	<bean id="banksBondsInterestReceivedReport" class="jmab2.report.MicroSimpleCSVReport">
+	<property name="computer" ref="banksBondsInterestReceivedComputer"/>
+	<property name="CSVreportVariable" ref="banksBondsInterestReceivedCSVReportVariables"/>
+	</bean>
+	
+	<bean id="banksBondsInterestReceivedComputer" class="cbdc.report.BanksBondsInterestReceivedComputer">
+	<property name="banksId"><util:constant static-field="benchmark2.StaticValues.BANKS_ID"/></property>
+	</bean>
+	
+	<bean id="banksBondsInterestReceivedCSVReportVariables" class="jmab2.report.MacroCSVReportVariables">
+	<property name="reportVariables" ref="banksBondsInterestReceivedReportVariables"/>
+	<property name="fileNamePrefix" ref="fileNamePrefix" />
+	<property name="fileNameSuffix" value="banksBondsInterestReceived" />
+	<property name="passThrough" value="true" />
+	</bean>
+	
+	<bean id="banksBondsInterestReceivedReportVariables" class="jmab2.report.MicroMultiVariablesReport">
+	<property name="numberOfSeries" value="100"/>
+	</bean>
+	
+					<!-- cb reserves interest paid report -->
+	
+	<bean id="cbReservesInterestPaidReport" class="jmab2.report.MicroSimpleCSVReport">
+	<property name="computer" ref="cbReservesInterestPaidComputer"/>
+	<property name="CSVreportVariable" ref="cbReservesInterestPaidCSVReportVariables"/>
+	</bean>
+	
+	<bean id="cbReservesInterestPaidComputer" class="cbdc.report.CBReservesInterestPaidComputer">
+	<property name="banksId"><util:constant static-field="benchmark2.StaticValues.CB_ID"/></property>
+	</bean>
+	
+	<bean id="cbReservesInterestPaidCSVReportVariables" class="jmab2.report.MacroCSVReportVariables">
+	<property name="reportVariables" ref="cbReservesInterestPaidReportVariables"/>
+	<property name="fileNamePrefix" ref="fileNamePrefix" />
+	<property name="fileNameSuffix" value="cbReservesInterestPaid" />
+	<property name="passThrough" value="true" />
+	</bean>
+	
+	<bean id="cbReservesInterestPaidReportVariables" class="jmab2.report.MicroMultiVariablesReport">
 	<property name="numberOfSeries" value="100"/>
 	</bean>
 
