@@ -6371,8 +6371,8 @@
 	<property name="simulationController" ref="simulationController" />
 	<property name="reports">
 			<list>
-			 <!-- <ref bean="cFirmsEBITDAminusCAPEXReport" />
-				<ref bean="kFirmsEBITDAReport" />
+			   <ref bean="cFirmsEBITDAminusCAPEXReport" />
+			<!--	<ref bean="kFirmsEBITDAReport" />
 				<ref bean="cFirmsExpEBITDAminusCAPEXReport" />
 				<ref bean="kFirmsExpEBITDAReport" />
 				<ref bean="cFirmsExpUFCFperCapacityReport" />
