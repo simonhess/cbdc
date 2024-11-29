@@ -14,6 +14,7 @@ import cern.jet.random.engine.RandomEngine;
 import jmab2.agents.MacroAgent;
 import jmab2.population.MacroPopulation;
 import jmab2.simulations.MacroSimulation;
+import jmab2.stockmatrix.Bond;
 import jmab2.stockmatrix.Item;
 import jmab2.stockmatrix.Loan;
 import net.sourceforge.jabm.Population;
@@ -38,15 +39,24 @@ public class BankAssetValueShock extends AbstractStrategy implements ShockStrate
 				MacroAgent bankruptBank = (MacroAgent)bs.getAgentList().get(bankruptBankIndex);
 				
 				double loansTotalValue=0;
+				double bondsTotalValue=0;
 				
 				for (Item i:bankruptBank.getItemsStockMatrix(true, StaticValues.SM_LOAN)){
 				loansTotalValue+=i.getValue();
 				}
 				
+				for (Item i:bankruptBank.getItemsStockMatrix(true, StaticValues.SM_BONDS)){
+					bondsTotalValue+=i.getValue();
+				}
+					
 				double loansSold = 0;
+				double bondsSold = 0;
 				
 				List<Item> loans = bankruptBank.getItemsStockMatrix(true, StaticValues.SM_LOAN);
 				Uniform loanDistr = new Uniform(0,loans.size()-1,prng);
+				
+				List<Item> bonds = bankruptBank.getItemsStockMatrix(true, StaticValues.SM_BONDS);
+				Uniform bondDistr = new Uniform(0,bonds.size()-1,prng);
 
 				// Determine solvent banks
 				
@@ -60,7 +70,7 @@ public class BankAssetValueShock extends AbstractStrategy implements ShockStrate
 				}
 				Uniform receiverDistr = new Uniform(0,solventBanks.size()-1,prng);
 				
-				while(loansSold<loansTotalValue*0.25) {
+				while(loansSold<loansTotalValue*0.5) {
 					loans = bankruptBank.getItemsStockMatrix(true, StaticValues.SM_LOAN);
 					int loanIndex = loanDistr.nextIntFromTo(0, loans.size()-1);
 	
@@ -73,6 +83,20 @@ public class BankAssetValueShock extends AbstractStrategy implements ShockStrate
 					l.setAssetHolder(receiverBank);
 					bankruptBank.removeItemStockMatrix(l, true, StaticValues.SM_LOAN);
 					receiverBank.addItemStockMatrix(l, true, StaticValues.SM_LOAN);
+				}
+				while(bondsSold<bondsTotalValue*0.5) {
+					bonds = bankruptBank.getItemsStockMatrix(true, StaticValues.SM_BONDS);
+					int bondIndex = bondDistr.nextIntFromTo(0, bonds.size()-1);
+	
+					// Get random bond from bank
+					Bond b= (Bond)bonds.get(bondIndex);
+					bondsSold+=b.getValue();
+					int receiverBankID = receiverDistr.nextInt();
+					// Assign bond to other random bank
+					MacroAgent receiverBank = solventBanks.get(receiverBankID);
+					b.setAssetHolder(receiverBank);
+					bankruptBank.removeItemStockMatrix(b, true, StaticValues.SM_BONDS);
+					receiverBank.addItemStockMatrix(b, true, StaticValues.SM_BONDS);
 				}
 			
 
