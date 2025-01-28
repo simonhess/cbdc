@@ -4177,7 +4177,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 				<property name="naturalRateOfInterest" value="0.0075"/>
 				<property name="inflationCoefficient" value="0.5"/>
 				<property name="unemploymentGapCoefficient" value="0.5"/>
-				<property name="smoothingParameter" value="0.0"/>
+				<property name="smoothingParameter" value="0.7"/>
 	</bean>
 
 <!--
