@@ -56,7 +56,7 @@ public class BankAssetValueShock extends AbstractStrategy implements ShockStrate
 				Uniform loanDistr = new Uniform(0,loans.size()-1,prng);
 				
 				List<Item> bonds = bankruptBank.getItemsStockMatrix(true, StaticValues.SM_BONDS);
-				Uniform bondDistr = new Uniform(0,bonds.size()-1,prng);
+				//Uniform bondDistr = new Uniform(0,bonds.size()-1,prng);
 
 				// Determine solvent banks
 				
@@ -69,11 +69,11 @@ public class BankAssetValueShock extends AbstractStrategy implements ShockStrate
 					}
 				}
 				Uniform receiverDistr = new Uniform(0,solventBanks.size()-1,prng);
-				
-				while(loansSold<loansTotalValue*0.5) {
+				// distribute loans to other banks
+				while(loansSold<=loansTotalValue*0.25) {
 					loans = bankruptBank.getItemsStockMatrix(true, StaticValues.SM_LOAN);
 					int loanIndex = loanDistr.nextIntFromTo(0, loans.size()-1);
-	
+					if(loans.size()<1)break;
 					// Get random loan from bank
 					Loan l= (Loan)loans.get(loanIndex);
 					loansSold+=l.getValue();
@@ -84,21 +84,27 @@ public class BankAssetValueShock extends AbstractStrategy implements ShockStrate
 					bankruptBank.removeItemStockMatrix(l, true, StaticValues.SM_LOAN);
 					receiverBank.addItemStockMatrix(l, true, StaticValues.SM_LOAN);
 				}
-				while(bondsSold<bondsTotalValue*0.5) {
+				// distribute bonds to other banks. Note that not the bond stocks are transfered but the value of the bond stock.
+				while(bondsSold<=bondsTotalValue*0.25) {
 					bonds = bankruptBank.getItemsStockMatrix(true, StaticValues.SM_BONDS);
-					int bondIndex = bondDistr.nextIntFromTo(0, bonds.size()-1);
 	
-					// Get random bond from bank
-					Bond b= (Bond)bonds.get(bondIndex);
-					bondsSold+=b.getValue();
+					// Get bond from bank
+					Bond b= (Bond)bonds.get(0);
+					if(b.getValue()<1) break;
+					// bondsSold+=b.getValue();
+					bondsSold++;
+					b.setValue(b.getValue()-1);
+					b.setQuantity(b.getQuantity()-1);
 					int receiverBankID = receiverDistr.nextInt();
 					// Assign bond to other random bank
 					MacroAgent receiverBank = solventBanks.get(receiverBankID);
-					b.setAssetHolder(receiverBank);
-					bankruptBank.removeItemStockMatrix(b, true, StaticValues.SM_BONDS);
-					receiverBank.addItemStockMatrix(b, true, StaticValues.SM_BONDS);
+					
+					Bond receiverBondItem = (Bond) receiverBank.getItemsStockMatrix(true, StaticValues.SM_BONDS).get(0);
+					
+					receiverBondItem.setValue(receiverBondItem.getValue()+1);
+					receiverBondItem.setQuantity(receiverBondItem.getQuantity()+1);
 				}
-			
+				
 
 				
 			}
