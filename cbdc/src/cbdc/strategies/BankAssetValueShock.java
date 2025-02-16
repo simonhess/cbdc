@@ -70,7 +70,7 @@ public class BankAssetValueShock extends AbstractStrategy implements ShockStrate
 				}
 				Uniform receiverDistr = new Uniform(0,solventBanks.size()-1,prng);
 				// distribute loans to other banks
-				while(loansSold<=loansTotalValue*0.25) {
+				while(loansSold<=loansTotalValue*0.375) {
 					loans = bankruptBank.getItemsStockMatrix(true, StaticValues.SM_LOAN);
 					int loanIndex = loanDistr.nextIntFromTo(0, loans.size()-1);
 					if(loans.size()<1)break;
@@ -85,7 +85,7 @@ public class BankAssetValueShock extends AbstractStrategy implements ShockStrate
 					receiverBank.addItemStockMatrix(l, true, StaticValues.SM_LOAN);
 				}
 				// distribute bonds to other banks. Note that not the bond stocks are transfered but the value of the bond stock.
-				while(bondsSold<=bondsTotalValue*0.25) {
+				while(bondsSold<=bondsTotalValue*0.375) {
 					bonds = bankruptBank.getItemsStockMatrix(true, StaticValues.SM_BONDS);
 	
 					// Get bond from bank
