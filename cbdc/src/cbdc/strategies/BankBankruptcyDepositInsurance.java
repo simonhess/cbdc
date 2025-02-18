@@ -164,13 +164,14 @@ public class BankBankruptcyDepositInsurance extends AbstractStrategy implements
 		for (Agent receiver : hhs.getAgents()) {
 			totalNW += ((MacroAgent) receiver).getNetWealth();
 		}
+		/*
 		for (Agent receiver : cFirms.getAgents()) {
 			totalNW += ((MacroAgent) receiver).getNetWealth();
 		}
 		for (Agent receiver : kFirms.getAgents()) {
 			totalNW += ((MacroAgent) receiver).getNetWealth();
 		}
-		
+		*/
 		
 		double fundsToSpend = Math.min(-nw, depositInsuranceFundSum);
 		
@@ -207,6 +208,7 @@ public class BankBankruptcyDepositInsurance extends AbstractStrategy implements
 				libHolder.transfer(payablestock, targetStock, toPay);
 			}
 			
+			/*
 			for (Agent rec : cFirms.getAgents()) {
 				ConsumptionFirm receiver = (ConsumptionFirm) rec;
 				double hhnw = receiver.getNetWealth();
@@ -234,6 +236,7 @@ public class BankBankruptcyDepositInsurance extends AbstractStrategy implements
 
 				libHolder.transfer(payablestock, targetStock, toPay);
 			}
+			*/
 		}
 
 		
