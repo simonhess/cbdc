@@ -114,7 +114,6 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 		<property name="events">
 			<list>		
 				<ref bean="computeExpectationsTic" />
-				<ref bean="ShockTic" />	
 				<ref bean="depInterestTic" />
 				<ref bean="reservesInterestTic" />
 				<ref bean="cbPolicyTic" />
@@ -133,6 +132,11 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 				<ref bean="investmentDemandTic" />
 				<ref bean="creditDemandTic" />
 				<ref bean="creditMarketTic" />
+				
+				<ref bean="ShockTic" />	
+				<ref bean="bankruptcyTic" />
+				<ref bean="bankruptcyTic2" />
+				
 				<ref bean="productionTic" />
 				<ref bean="rdOutcomeTic" />
 				<ref bean="unemploymentBenefitAmountTic" />
@@ -145,28 +149,24 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 				<ref bean="advInterestTic" />
 				<!-- New TIC for interest & loan repayment -->
 				<ref bean="interbankInterestTic" />
-				
 				<ref bean="taxesTic" />
 				<ref bean="dividendsTic" />
 				<ref bean="depDemandTic" />
-				<ref bean="depMarketTic" />
-				
-				<ref bean="bankruptcyTic" />
-				<ref bean="bankruptcyTic2" />
+				<ref bean="depMarketTic" />		
 				
 				<ref bean="bondInterestTic" />
 				<ref bean="bondSupplyTic" />
 				<ref bean="bondMarket1Tic" />
 				<ref bean="bondDemandTic" />
-				<ref bean="cbBondsPurchasesTic" />
-				
+				<ref bean="cbBondsPurchasesTic" />	
 				<!--<ref bean="reservesDemandBondTic" />-->
 				<!--<ref bean="reservesMarketBondTic" />-->
 				<ref bean="bondMarket2Tic" />
 				<!-- 2 InterbankMarketTics -->
 				<ref bean="interbankDemandSupplyTic" />
 				<ref bean="interbankMarketTic" />
-
+				
+				
 				<ref bean="reservesDemandBaselTic" />
 				<ref bean="reservesMarketBaselTic" />
 				<ref bean="computeAggregatesTic" />
@@ -525,7 +525,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 	<bean id="creditMarketMixer" class="jmab2.mixing.SelectionRandomRobinBuyerMixer"
 		scope="simulation">
 		<property name="prng" ref="prng" />
-		<property name="nbSellers" value="4"/>
+		<property name="nbSellers" value="10"/>
 	</bean>
 
 
@@ -610,7 +610,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 	<bean id="depositMarketMixer" class="jmab2.mixing.SelectionRandomRobinBuyerMixer"
 		scope="simulation">
 		<property name="prng" ref="prng" />
-		<property name="nbSellers" value="4"/>
+		<property name="nbSellers" value="10"/>
 	</bean>
 
 	<bean id="depositMktTransactionMechanism" class="jmab2.mechanisms.DepositMechanism"
@@ -2070,7 +2070,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 	<!-- The agentList of capitalFirms -->
 	<bean id="capitalFirms" scope="simulation" class="net.sourceforge.jabm.agent.AgentList"
 		init-method="populateFromFactory">
-		<property name="size" value="4" />
+		<property name="size" value="10" />
 		<property name="agentFactory" ref="capitalFirmsFactory" />
 	</bean>
 	
@@ -3055,7 +3055,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 	<!-- The agentList of banks -->
 	<bean id="banks" scope="simulation" class="net.sourceforge.jabm.agent.AgentList"
 		init-method="populateFromFactory">
-		<property name="size" value="4" />
+		<property name="size" value="10" />
 		<property name="agentFactory" ref="banksFactory" />
 	</bean>
 	
