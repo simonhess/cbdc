@@ -154,7 +154,6 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 				<ref bean="depDemandTic" />
 				<ref bean="depMarketTic" />		
 				
-				<ref bean="bondInterestTic" />
 				<ref bean="bondSupplyTic" />
 				<ref bean="bondMarket1Tic" />
 				<ref bean="bondDemandTic" />
