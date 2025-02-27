@@ -133,7 +133,10 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 				<ref bean="creditDemandTic" />
 				<ref bean="creditMarketTic" />
 				
-				<ref bean="ShockTic" />	
+				<ref bean="depDemandTic" />
+				<ref bean="depMarketTic" />		
+				
+				<ref bean="ShockTic" />			
 				<ref bean="bankruptcyTic" />
 				<ref bean="bankruptcyTic2" />
 				
@@ -150,10 +153,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 				<!-- New TIC for interest & loan repayment -->
 				<ref bean="interbankInterestTic" />
 				<ref bean="taxesTic" />
-				<ref bean="dividendsTic" />
-				<ref bean="depDemandTic" />
-				<ref bean="depMarketTic" />		
-				
+				<ref bean="dividendsTic" />		
 				<ref bean="bondSupplyTic" />
 				<ref bean="bondMarket1Tic" />
 				<ref bean="bondDemandTic" />
