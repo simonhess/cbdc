@@ -39,72 +39,27 @@ public class BankAssetValueShock extends AbstractStrategy implements ShockStrate
 				MacroAgent bankruptBank = (MacroAgent)bs.getAgentList().get(bankruptBankIndex);
 				
 				double loansTotalValue=0;
-				double bondsTotalValue=0;
 				
 				for (Item i:bankruptBank.getItemsStockMatrix(true, StaticValues.SM_LOAN)){
 				loansTotalValue+=i.getValue();
 				}
-				
-				for (Item i:bankruptBank.getItemsStockMatrix(true, StaticValues.SM_BONDS)){
-					bondsTotalValue+=i.getValue();
-				}
 					
-				double loansSold = 0;
-				double bondsSold = 0;
+				double loanLosses = 0;
 				
 				List<Item> loans = bankruptBank.getItemsStockMatrix(true, StaticValues.SM_LOAN);
 				Uniform loanDistr = new Uniform(0,loans.size()-1,prng);
-				
-				List<Item> bonds = bankruptBank.getItemsStockMatrix(true, StaticValues.SM_BONDS);
-				//Uniform bondDistr = new Uniform(0,bonds.size()-1,prng);
-
-				// Determine solvent banks
-				
-				ArrayList<Bank> solventBanks = new ArrayList<Bank>();
-				
-				for(Agent mA:bs.getAgents()) {
-					Bank b = (Bank) mA;
-					if(!b.equals(bankruptBank)) {
-						solventBanks.add(b);
-					}
-				}
-				Uniform receiverDistr = new Uniform(0,solventBanks.size()-1,prng);
-				// distribute loans to other banks
-				while(loansSold<=loansTotalValue*0.375) {
+			
+				// reduce value of loans till
+				while(loanLosses<=loansTotalValue*0.5) {
 					loans = bankruptBank.getItemsStockMatrix(true, StaticValues.SM_LOAN);
 					int loanIndex = loanDistr.nextIntFromTo(0, loans.size()-1);
 					if(loans.size()<1)break;
 					// Get random loan from bank
 					Loan l= (Loan)loans.get(loanIndex);
-					loansSold+=l.getValue();
-					int receiverBankID = receiverDistr.nextInt();
-					// Assign loan to other random bank
-					MacroAgent receiverBank = solventBanks.get(receiverBankID);
-					l.setAssetHolder(receiverBank);
-					bankruptBank.removeItemStockMatrix(l, true, StaticValues.SM_LOAN);
-					receiverBank.addItemStockMatrix(l, true, StaticValues.SM_LOAN);
+					l.setValue(0);
+					loanLosses+=l.getValue();
 				}
-				// distribute bonds to other banks. Note that not the bond stocks are transfered but the value of the bond stock.
-				while(bondsSold<=bondsTotalValue*0.375) {
-					bonds = bankruptBank.getItemsStockMatrix(true, StaticValues.SM_BONDS);
-	
-					// Get bond from bank
-					Bond b= (Bond)bonds.get(0);
-					if(b.getValue()<1) break;
-					// bondsSold+=b.getValue();
-					bondsSold++;
-					b.setValue(b.getValue()-1);
-					b.setQuantity(b.getQuantity()-1);
-					int receiverBankID = receiverDistr.nextInt();
-					// Assign bond to other random bank
-					MacroAgent receiverBank = solventBanks.get(receiverBankID);
-					
-					Bond receiverBondItem = (Bond) receiverBank.getItemsStockMatrix(true, StaticValues.SM_BONDS).get(0);
-					
-					receiverBondItem.setValue(receiverBondItem.getValue()+1);
-					receiverBondItem.setQuantity(receiverBondItem.getQuantity()+1);
-				}
-				
+
 
 				
 			}
