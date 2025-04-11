@@ -56,8 +56,8 @@ public class BankAssetValueShock extends AbstractStrategy implements ShockStrate
 					if(loans.size()<1)break;
 					// Get random loan from bank
 					Loan l= (Loan)loans.get(loanIndex);
-					l.setValue(0);
 					loanLosses+=l.getValue();
+					l.setValue(0);
 				}
 
 
