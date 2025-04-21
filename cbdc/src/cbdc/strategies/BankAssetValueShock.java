@@ -38,35 +38,13 @@ public class BankAssetValueShock extends AbstractStrategy implements ShockStrate
 				int bankruptBankIndex = distr.nextInt();
 				MacroAgent bankruptBank = (MacroAgent)bs.getAgentList().get(bankruptBankIndex);
 				
-				double loansTotalValue=0;
-				
-				for (Item i:bankruptBank.getItemsStockMatrix(true, StaticValues.SM_LOAN)){
-				loansTotalValue+=i.getValue();
-				}
-					
-				double loanLosses = 0;
-				
 				List<Item> loans = bankruptBank.getItemsStockMatrix(true, StaticValues.SM_LOAN);
-				Uniform loanDistr = new Uniform(0,loans.size()-1,prng);
-			
-				// reduce value of loans till
-				while(loanLosses<=loansTotalValue*0.5) {
-					loans = bankruptBank.getItemsStockMatrix(true, StaticValues.SM_LOAN);
-					int loanIndex = loanDistr.nextIntFromTo(0, loans.size()-1);
-					if(loans.size()<1)break;
-					// Get random loan from bank
-					Loan l= (Loan)loans.get(loanIndex);
-					loanLosses+=l.getValue();
-					l.setValue(0);
+		
+				for (Item i:loans){
+					i.setValue(i.getValue()*0.25);
 				}
-
-
-				
 			}
 			
-		
-		
-		
 	}
 	
 	
