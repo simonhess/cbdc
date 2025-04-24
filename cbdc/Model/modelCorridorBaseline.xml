@@ -132,12 +132,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 				<ref bean="rdDecisionTic" />
 				<ref bean="investmentDemandTic" />
 				<ref bean="creditDemandTic" />
-				<ref bean="creditMarketTic" />
-				
-				<ref bean="depDemandTic" />
-				<ref bean="depMarketTic" />		
-				
-				
+				<ref bean="creditMarketTic" />	
 				<ref bean="productionTic" />
 				<ref bean="rdOutcomeTic" />
 				<ref bean="unemploymentBenefitAmountTic" />
@@ -151,7 +146,11 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 				<!-- New TIC for interest & loan repayment -->
 				<ref bean="interbankInterestTic" />
 				<ref bean="taxesTic" />
-				<ref bean="dividendsTic" />		
+				<ref bean="dividendsTic" />
+				<ref bean="depDemandTic" />
+				<ref bean="depMarketTic" />
+				<ref bean="bankruptcyTic" />
+				<ref bean="bankruptcyTic2" />
 				<ref bean="bondSupplyTic" />
 				<ref bean="bondMarket1Tic" />
 				<ref bean="bondDemandTic" />
@@ -163,13 +162,8 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 				<ref bean="interbankDemandSupplyTic" />
 				<ref bean="interbankMarketTic" />
 				
-				
 				<ref bean="reservesDemandBaselTic" />
 				<ref bean="reservesMarketBaselTic" />
-				
-				<ref bean="bankruptcyTic" />
-				<ref bean="bankruptcyTic2" />
-				
 				
 				<ref bean="computeAggregatesTic" />
 				<ref bean="nominalGDPReportTic" />
