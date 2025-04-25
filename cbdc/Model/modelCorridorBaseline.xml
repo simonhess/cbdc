@@ -114,7 +114,6 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 		<property name="events">
 			<list>		
 				<ref bean="computeExpectationsTic" />
-				<ref bean="ShockTic" />	
 				<ref bean="depInterestTic" />
 				<ref bean="reservesInterestTic" />
 				<ref bean="cbPolicyTic" />
@@ -149,6 +148,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 				<ref bean="dividendsTic" />
 				<ref bean="depDemandTic" />
 				<ref bean="depMarketTic" />
+				<ref bean="ShockTic" />
 				<ref bean="bankruptcyTic" />
 				<ref bean="bankruptcyTic2" />
 				<ref bean="bondSupplyTic" />
