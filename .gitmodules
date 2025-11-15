@@ -1,0 +1,3 @@
+[submodule "submodules/module_benchmark2"]
+	path = submodules/module_benchmark2
+	url = https://github.com/simonhess/benchmark2.git
