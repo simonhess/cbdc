@@ -299,8 +299,9 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 				
 				<ref bean="microSimpleCSVReportTic" />
 				
-				<!-- Reports	
+					
 				<ref bean="TFMReportTic" />
+				<!-- Reports
 				<ref bean="BSNetworkReportTic" /> 
 				<ref bean="FlowNetworkReportTic" />
 				 -->
@@ -1973,7 +1974,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 <property name="shareOfExpIncomeAsDeposit" value="1.25"/>
 <property name="iAdv" value="0.015"/>
 <property name="iBonds" value="0.015"/>
-<property name="iDep" value="0.01425"/>
+<property name="iDep" value="0.01225"/>
 <property name="targetedLiquidityRatio" value="0.05"/>
 <property name="targetedCapitalAdequacyRatio" value="0.08"/>
 <property name="DISReserveRatio" value="0"/>
@@ -1981,62 +1982,63 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 <property name="csMarkup" value="0.165"/>
 <property name="ksMarkup" value="0.075"/>
 <property name="bsMarkup" value="0.0025"/>
-<property name="bsAdv" value="2451.34600031282"/>
-<property name="bsBonds" value="21873.9881773591"/>
+<property name="bsAdv" value="2452.94877472041"/>
+<property name="bsBonds" value="21152.5630500754"/>
 <property name="bsCash" value="0"/>
-<property name="bsProfits" value="108.389090265314"/>
-<property name="bsRes" value="2451.34600031282"/>
-<property name="bsTax" value="19.5100362477566"/>
-<property name="bsDiv" value="71.3024447853409"/>
-<property name="bsNW" value="2361.12450686063"/>
-<property name="bsProfitShareAsDividends" value="0.802241265655859"/>
+<property name="bsProfits" value="208.784379063267"/>
+<property name="bsRes" value="2452.94877472041"/>
+<property name="bsTax" value="37.5811882313881"/>
+<property name="bsDiv" value="153.138839265795"/>
+<property name="bsNW" value="2426.64456037676"/>
+<property name="bsProfitShareAsDividends" value="0.894485894343973"/>
 <property name="riskAversionK" value="7.19722457733622"/>
 <property name="riskAversionC" value="7.19722457733622"/>
 <property name="cbBonds" value="0"/>
-<property name="cbProfits" value="36.4964665058981"/>
-<property name="seigniorage" value="36.4964665058981"/>
+<property name="cbProfits" value="36.5203291521649"/>
+<property name="seigniorage" value="36.5203291521649"/>
 <property name="csOutput" value="32000"/>
-<property name="cPrice" value="1.10990054098057"/>
+<property name="cPrice" value="1.11041800644498"/>
 <property name="csDep" value="31250"/>
 <property name="csInv" value="3200"/>
-<property name="csLoans" value="27929.7647028163"/>
-<property name="csLoans0" value="2787.08613356986"/>
-<property name="csOCF" value="9484.58765000196"/>
-<property name="csProfits" value="5494.9710589325"/>
-<property name="cUnitCost" value="0.952704327021951"/>
-<property name="csTax" value="989.094790607851"/>
-<property name="csDiv" value="4055.28864149219"/>
-<property name="targetCashFlow" value="0.176434886634875"/>
-<property name="unemploymentBenefit" value="0.494592811097665"/>
+<property name="csLoans" value="28613.8199953255"/>
+<property name="csLoans0" value="2855.34739680045"/>
+<property name="csOCF" value="9437.97215502016"/>
+<property name="csProfits" value="5435.29215155806"/>
+<property name="cUnitCost" value="0.953148503386247"/>
+<property name="csTax" value="978.352587280451"/>
+<property name="csDiv" value="4011.24560784985"/>
+<property name="targetCashFlow" value="0.175485916230724"/>
+<property name="unemploymentBenefit" value="0.498214412634864"/>
 <property name="gEmpl" value="1360"/>
 <property name="gRes" value="0"/>
-<property name="gBonds" value="21873.9881773591"/>
-<property name="hhsDep" value="11526.9200062564"/>
-<property name="hhsNI" value="35532.8324198772"/>
-<property name="hhsTax" value="7452.4687516898"/>
-<property name="hhsNomCons" value="35480.3208448724"/>
-<property name="hhsRealCons" value="31967.1173540706"/>
+<property name="gBonds" value="21152.5630500754"/>
+<property name="hhsDep" value="11558.9754944082"/>
+<property name="hhsNI" value="35549.3919242658"/>
+<property name="hhsTax" value="7453.55981059776"/>
+<property name="hhsNomCons" value="35496.8558770871"/>
+<property name="hhsRealCons" value="31967.1111879128"/>
 <property name="propensityOOI" value="0.9"/>
-<property name="hhsNW" value="11526.9200062564"/>
+<property name="hhsNW" value="11558.9754944082"/>
 <property name="iLoans" value="0.0175"/>
 <property name="iReserves" value="0"/>
 <property name="ksOutput" value="2000"/>
-<property name="kPrice" value="2.70229130835966"/>
+<property name="kPrice" value="2.70355118920051"/>
 <property name="ksDep" value="6250"/>
 <property name="ksInv" value="200"/>
-<property name="ksLoans" value="1584.29163294156"/>
-<property name="ksLoans0" value="158.095039062643"/>
-<property name="ksOCF" value="381.006331358479"/>
-<property name="ksProfits" value="469.205976975837"/>
-<property name="kUnitCost" value="2.51375935661364"/>
-<property name="ksTax" value="84.4570758556507"/>
-<property name="ksDiv" value="346.274011008168"/>
+<property name="ksLoans" value="1719.23700938407"/>
+<property name="ksLoans0" value="171.561116971791"/>
+<property name="ksOCF" value="370.976473816254"/>
+<property name="ksProfits" value="456.976571298266"/>
+<property name="kUnitCost" value="2.51493133879118"/>
+<property name="ksTax" value="82.2557828336879"/>
+<property name="ksDiv" value="337.24870961812"/>
 <property name="laborProductivity" value="2"/>
 <property name="capitalLaborRatio" value="6.4"/>
 <property name="ksShareOfExpIncomeAsDeposit" value="1.25"/>
 <property name="csShareOfExpIncomeAsDeposit" value="1.25"/>
-<property name="csEBITDAminusCAPEX" value="5576.92690691561"/>
-<property name="ksEBITDA" value="496.724690203111"/>
+<property name="csEBITDAminusCAPEX" value="5528.94188151693"/>
+<property name="ksEBITDA" value="486.83924888062"/>
+
 
 
 <property name="avpAllProdComputer" ref="AveragePriceAllProducersComputer"/>
@@ -4166,7 +4168,7 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 		<property name="scheduler" ref="simulationController" />
 	</bean>
 
-
+<!--
 	<bean id="advancesInterestRateStrategy" scope="prototype"
 		parent="strategy" class="benchmark2.strategies.MonetaryTaylorWithSmoothingAndUnempGap">
 				<property name="targetInflation" value="0.0075"/>
@@ -4175,13 +4177,13 @@ Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kin
 				<property name="unemploymentGapCoefficient" value="0.5"/>
 				<property name="smoothingParameter" value="0.7"/>
 	</bean>
+-->	
 
-<!--
 	<bean id="advancesInterestRateStrategy" scope="prototype"
 		parent="strategy" class="benchmark2.strategies.MonetaryPolicyStatic">
 				<property name="staticAdvancesRate" value="0.015"/>
 	</bean> 
--->	
+
 
 	
 	<bean id="reservesInterestRateStrategy" scope="prototype"
